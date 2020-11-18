@@ -26,14 +26,16 @@ Enhorabuena!! tienes el ambiente requerido para poder realizar tú proyecto fina
 Si presentaste algún inconveniente con la instalación o deseas averiguar otras formas de realizar la instalación, puedes consultar el siguiente enlace:
 https://devexpress.github.io/testcafe/documentation/guides/basic-guides/install-testcafe.html
 
+# Instalaciones adicionales (Exclusivo MacOs)
+Librería para generar reportes:
+npm install -g testcafe-reporter-html@latest
+
 # Permisos 📄
 
 Si cuentas con un equipo de cómputo MacOs Catalina o más nuevo, Testcafe requiere permisos para grabar la pantalla. 
 Es necesario otorgar los siguientes permisos:
 
 Open 'System Preferences > Security & Privacy > Privacy > Screen Recording' and check 'TestCafe Browser Tools' in the application list.
-
-# ¿Cómo clonar el repositorio?
 
 # Exploradores recomendados
 Chrome
@@ -43,8 +45,6 @@ Safari
 # Algunos comandos de utilidad
 
 Ejecutar script: testcafe navegador nombreScript.js (e.g. testcafe chrome home.js)
-
-
 
 # Expresiones de gratitud
 
