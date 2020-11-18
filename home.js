@@ -9,6 +9,7 @@ test('Logo se carga correctamente', async t => {
         .expect(page.logo.exists).ok()
         .click(page.logo)
         .expect(page.logo.exists).ok()
+        .takeScreenshot()
 });
 
 test('Menú superior se carga correctamente', async t => {
@@ -20,16 +21,19 @@ test('Menú superior se carga correctamente', async t => {
         .expect(page.women_topOption.exists).ok()
         .click(page.women_topOption)
         .expect(page.women_page.exists).ok()
+        .takeScreenshot()
 
     await t
         .expect(page.dresses_topOption.exists).ok()
         .click(page.dresses_topOption)
         .expect(page.dresses_page.exists).ok()
+        .takeScreenshot()
 
     await t
         .expect(page.tShirts_topOption.exists).ok()
         .click(page.tShirts_topOption)
         .expect(page.tShirts_page.exists).ok()
+        .takeScreenshot()
 });
 
 test('Opción Sign in se carga correctamente', async t => {
@@ -37,6 +41,7 @@ test('Opción Sign in se carga correctamente', async t => {
         .expect(page.signIn_link.exists).ok()
         .click(page.signIn_link)
         .expect(page.signIn_page.innerText).contains('AUTHENTICATION')
+        .takeScreenshot()
 });
 
 test('Opción Cart se carga correctamente', async t => {
@@ -44,24 +49,29 @@ test('Opción Cart se carga correctamente', async t => {
         .expect(page.cart_option.exists).ok()
         .click(page.cart_option)
         .expect(page.cart_page.innerText).contains('SHOPPING-CART SUMMARY')
+        .takeScreenshot()
 });
 
 test('Features Popular y Best Seller se cargan correctamente', async t => {
     await t
         .expect(page.popular_homeFeature.exists).ok()
         .click(page.popular_homeFeature)
+        .takeScreenshot()
 
     await t
         .expect(page.bestSeller_homeFeature.exists).ok()
         .click(page.bestSeller_homeFeature)
+        .takeScreenshot()
 });
 
 test('Opción My Account en el footer se carga correctamente', async t => {
     await t
         .expect(page.footer.exists).ok()
+        .takeScreenshot()
 
     await t
         .expect(page.myAccount_footerOption.exists).ok()
         .click(page.myAccount_footerOption)
         .expect(page.signIn_page.innerText).contains('AUTHENTICATION')
+        .takeScreenshot()
 });

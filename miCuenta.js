@@ -15,6 +15,7 @@ test('Crear una cuenta', async t => {
         .expect(page.signIn_page.innerText).contains('AUTHENTICATION')
         .typeText(page.email_input, data.email)
         .click(page.createAccount_btn)
+        .takeScreenshot()
 
     await t
         .expect(page.email_form.value).contains(data.email)
@@ -27,6 +28,7 @@ test('Crear una cuenta', async t => {
     await t
         .expect(page.firstName_Address.value).contains(data.firstName)
         .expect(page.lastName_Address.value).contains(data.lastName)
+        .takeScreenshot()
 
     await t
         .typeText(page.pwd_input, data.password)
@@ -60,6 +62,7 @@ test('Crear una cuenta', async t => {
     await t
         .click(page.submit_button)
         .expect(page.myAccount_page.exists).ok()
+        .takeScreenshot()
 });
 
 test('Iniciar sesión con usuario registrado', async t => {
@@ -76,11 +79,13 @@ test('Iniciar sesión con usuario registrado', async t => {
     await t
         .typeText(page.pwdRegistered_input, data.password)
         .expect(page.pwdRegistered_input.value).contains(data.password)
+        .takeScreenshot()
 
     await t
         .click(page.signIn_btn)
-        .expect(page.myAccount_page.exists, { speed: 0.1 }).ok()
+        .expect(page.myAccount_page.exists).ok()
         .expect(page.customerName.innerText).eql('Tania Radilla')
+        .takeScreenshot()
 });
 
 test('Cerrar sesión', async t => {
@@ -97,15 +102,14 @@ test('Cerrar sesión', async t => {
 
     await t
         .click(page.signIn_btn)
-        .expect(page.myAccount_page.exists, { speed: 0.1 }).ok()
-
-    await t
-    //.expect(page.customerName.innerText).contains(data.firstName + data.lastName)
+        .expect(page.myAccount_page.exists).ok()
         .expect(page.customerName.innerText).eql('Tania Radilla')
+        .takeScreenshot()
 
     await t
-        .click(page.signOut_link, { speed: 0.1 })
+        .click(page.signOut_link)
         .expect(page.signOut_page.innerText).contains('AUTHENTICATION')
+        .takeScreenshot()
 });
 
 test('Crear cuenta con un correo existente', async t => {
@@ -115,9 +119,11 @@ test('Crear cuenta con un correo existente', async t => {
     await t
         .typeText(page.email_input, data.email)
         .click(page.createAccount_btn)
+        .takeScreenshot()
 
     await t
         .expect(page.createrError_msg.exists).ok()
+        .takeScreenshot()
 
     console.log("Correo:", data.email)
 });
@@ -129,22 +135,24 @@ test('Recuperar contraseña con un correo válido', async t => {
     await t
         .typeText(page.emailRegistered_input, data.email)
         .expect(page.emailRegistered_input.value).contains(data.email)
+        .takeScreenshot()
 
     await t
         .typeText(page.pwdRegistered_input, data.passwordWrong)
         .expect(page.pwdRegistered_input.value).contains(data.passwordWrong)
-
+        .takeScreenshot()
     await t
         .click(page.forgotPwd_link)
         .expect(page.forgotPassword_page.exists).ok()
+        .takeScreenshot()
 
     await t
         .typeText(page.emailRecovery_input, data.email)
         .expect(page.emailRecovery_input.value).contains(data.email)
+        .takeScreenshot()
 
     await t
         .click(page.retrievePassword_btn)
         .expect(page.passwordRecoverySuccess_alert.exists).ok()
-        //.expect(page.passwordError_alert.exists).ok()
-        // .expect(page.passwordError_msg.exists).ok()
+        .takeScreenshot()
 });
